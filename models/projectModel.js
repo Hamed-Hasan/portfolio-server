@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+
 const projectSchema = new mongoose.Schema({
   links: {
     image: String,
@@ -21,8 +23,11 @@ const projectSchema = new mongoose.Schema({
     img3: String,
     img4: String,
   },
-  technology: [String],
-});
+  technology: [{
+    techLeft: String,
+    techRight: String,
+  }],
+}, { timestamps: true });
 
 const Project = mongoose.model('Project', projectSchema);
 

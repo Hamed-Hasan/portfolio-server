@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 const projectController = require('../controllers/projectController');
 
 router.post('/project', projectController.createProject);
-router.get('/project', projectController.getAllData);
+router.get('/project', projectController.getAllProjects);
 router.post('/users', userController.createUser);
 router.get('/users', userController.getUsers);
 
