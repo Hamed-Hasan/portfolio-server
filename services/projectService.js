@@ -24,3 +24,14 @@ exports.createProjectService = async (data) => {
       throw new Error('Failed to create data');
     }
   };
+
+
+
+// Delete a project by ID
+exports.deleteProjectById = async (projectId) => {
+  try {
+    await Project.findByIdAndDelete(projectId);
+  } catch (error) {
+    throw new Error('Failed to delete project');
+  }
+};

@@ -1,5 +1,5 @@
 const Project = require("../models/projectModel");
-const { createProjectService, getProjects } = require("../services/projectService");
+const { createProjectService, getProjects, deleteProjectById } = require("../services/projectService");
 
 
 // GET all data
@@ -22,3 +22,16 @@ exports.createProject = async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     }
   };
+
+
+
+// Delete a project
+exports.deleteProject = async (req, res) => {
+  try {
+    const projectId = req.params.id;
+    await deleteProjectById(projectId);
+    res.status(200).send({ message: 'Project successfully deleted' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete project' });
+  }
+};
