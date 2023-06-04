@@ -4,6 +4,8 @@ const projectController = require('../controllers/projectController');
 const userController = require('../controllers/userController');
 
 // Project routes
+// Update project
+router.put('/project/:id', projectController.updateProject);
 router.delete('/project/:id', projectController.deleteProject);
 router.post('/project', projectController.createProject);
 router.get('/project', projectController.getAllProjects);

@@ -18,7 +18,7 @@ exports.getProjects = async () => {
 exports.createProjectService = async (data) => {
     try {
       const newData = await Project.create(data);
-      console.log(newData);
+      // console.log(newData);
       return newData;
     } catch (error) {
       throw new Error('Failed to create data');
@@ -33,5 +33,18 @@ exports.deleteProjectById = async (projectId) => {
     await Project.findByIdAndDelete(projectId);
   } catch (error) {
     throw new Error('Failed to delete project');
+  }
+};
+
+
+// Update project by ID
+exports.updateProjectById = async (projectId, updatedData) => {
+  try {
+    const project = await Project.findByIdAndUpdate(projectId, updatedData, { new: true });
+
+    return project;
+  } catch (error) {
+    console.log(error);
+    throw new Error('Failed to update project');
   }
 };
