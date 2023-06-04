@@ -40,8 +40,7 @@ exports.deleteProjectById = async (projectId) => {
 // Update project by ID
 exports.updateProjectById = async (projectId, updatedData) => {
   try {
-    const project = await Project.findByIdAndUpdate(projectId, updatedData, { new: true });
-
+    const project = await Project.findByIdAndUpdate(projectId, { $set: updatedData }, { new: true });
     return project;
   } catch (error) {
     console.log(error);
