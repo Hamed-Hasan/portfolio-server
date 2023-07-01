@@ -3,6 +3,7 @@ const User = require('../models/userModel');
 class UserService {
   async createUser(userData) {
     try {
+// sourcery skip: inline-immediately-returned-variable
       const user = await User.create(userData);
       return user;
     } catch (error) {
