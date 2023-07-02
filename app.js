@@ -20,7 +20,7 @@ app.use(express.json());
 
 
 // Connect to MongoDB using Mongoose
-mongoose.connect('mongodb://127.0.0.1:27017/portfolio-data', {
+mongoose.connect('mongodb+srv://university:GN0TIJlfJ7FJ2CVD@cluster0.8m7ne9q.mongodb.net/portfolio-data', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
