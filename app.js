@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const routes = require('./routes/userRoutes');
-const { submitMessage } = require('./mail/contactController');
+
 
 const app = express();
 
@@ -20,19 +20,17 @@ app.use(express.json());
 
 
 // Connect to MongoDB using Mongoose
-async function connectToDB() {
-    try {
-      await mongoose.connect('mongodb://127.0.0.1:27017/portfolio-data', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-      console.log('Connected to DataBase!');
-    } catch (error) {
-      console.error('Failed to connect to MongoDB:', error);
-    }
-  }
-  
-  connectToDB();
+mongoose.connect('mongodb://127.0.0.1:27017/portfolio-data', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('Connected to DataBase!');
+})
+.catch((error) => {
+  console.error('Failed to connect to MongoDB:', error);
+});
+
 
 app.use(express.json());
 
@@ -41,11 +39,12 @@ app.use('/', routes);
 
 
 app.get('/', async (req, res) => {
-    try {
-      res.send('working portfolio server!');
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  });
+  try {
+    res.send('working portfolio server!');
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 module.exports = app;

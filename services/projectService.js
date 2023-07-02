@@ -4,9 +4,7 @@ const Project = require("../models/projectModel");
 // Service to retrieve data
 exports.getProjects = async () => {
   try {
-    const data = await Project.aggregate([
-      { $sort: { priority: 1 } }
-    ]);
+    const data = await Project.find().sort({ priority: 1 });
     return data;
   } catch (error) {
     throw new Error('Failed to fetch data');

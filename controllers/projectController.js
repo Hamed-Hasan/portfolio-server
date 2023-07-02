@@ -14,14 +14,17 @@ exports.getAllProjects = async (req, res) => {
 
 // Create new data
 exports.createProject = async (req, res) => {
-    try {
-      const newData = await createProjectService(req.body);
-      res.status(201).json(newData);
-     
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
+  try {
+    const newData = await createProjectService(req.body);
+    if (!newData) {
+      return res.status(400).json({ error: 'Invalid data provided' });
     }
-  };
+    res.status(201).json(newData);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 
 
 
