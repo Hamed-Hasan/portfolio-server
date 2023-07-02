@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
+
 const routes = require('./routes/userRoutes');
 
 
@@ -16,20 +18,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-
-
-
 // Connect to MongoDB using Mongoose
-mongoose.connect('mongodb+srv://university:GN0TIJlfJ7FJ2CVD@cluster0.8m7ne9q.mongodb.net/portfolio-data', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => {
-  console.log('Connected to DataBase!');
-})
-.catch((error) => {
-  console.error('Failed to connect to MongoDB:', error);
-});
+const connectToDB = () => {
+  mongoose.connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+    .then(() => {
+      console.log('Connected to DataBase!');
+    })
+    .catch((error) => {
+      console.error('Failed to connect to MongoDB:', error);
+    });
+};
+connectToDB();
 
 
 app.use(express.json());
