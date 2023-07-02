@@ -18,20 +18,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+
+
+
 // Connect to MongoDB using Mongoose
-const connectToDB = () => {
-  mongoose.connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-    .then(() => {
-      console.log('Connected to DataBase!');
-    })
-    .catch((error) => {
-      console.error('Failed to connect to MongoDB:', error);
-    });
-};
-connectToDB();
+mongoose.connect(process.env.MONGODB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('Connected to DataBase!');
+})
+.catch((error) => {
+  console.error('Failed to connect to MongoDB:', error);
+});
 
 
 app.use(express.json());
