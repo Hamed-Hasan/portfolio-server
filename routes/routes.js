@@ -24,5 +24,14 @@ router.post('/api/submit-message', submitMessage);
 
 
 
+// blog routes 
+router.post('/blog', blogController.createBlog);
+router.get('/blog/:id', blogController.getBlogById);
+router.put('/blog/:id', blogController.updateBlog);
+router.delete('/blog/:id', blogController.deleteBlog);
+
+router.get('/search', blogController.searchBlogs);
+router.get('/pagination', blogController.getPaginatedBlogs);
+
 
 module.exports = router;
