@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-const routes = require('./routes/userRoutes');
+const routes = require('./routes/routes');
 
 
 const app = express();

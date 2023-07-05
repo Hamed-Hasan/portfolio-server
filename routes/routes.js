@@ -4,6 +4,9 @@ const projectController = require('../controllers/projectController');
 const userController = require('../controllers/userController');
 const { submitMessage } = require('../mail/contactController');
 
+const blogController = require('../app/blogs/blogController');
+
+
 // Project routes
 // Update project
 router.put('/project/:id', projectController.updateProject);
@@ -17,5 +20,9 @@ router.get('/users', userController.getUsers);
 
 // Submit message route
 router.post('/api/submit-message', submitMessage);
+
+
+
+
 
 module.exports = router;

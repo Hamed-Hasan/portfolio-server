@@ -27,6 +27,7 @@ const projectSchema = new mongoose.Schema({
     techLeft: String,
     techRight: String,
   }],
+  
 }, { timestamps: true });
 
 const Project = mongoose.model('Project', projectSchema);
