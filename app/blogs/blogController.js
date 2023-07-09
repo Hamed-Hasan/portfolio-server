@@ -1,4 +1,5 @@
 // controllers/blogController.js
+const Blog = require('./Blog');
 const blogService = require('./blogService');
 
 async function createBlog(req, res) {
@@ -59,6 +60,29 @@ async function getPaginatedBlogs(req, res) {
   }
 }
 
+const updateLikeCount = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    const blog = await Blog.findById(blogId);
+
+    if (!blog) {
+      return res.status(404).json({ message: 'Blog not found' });
+    }
+
+    blog.likeCount += 1;
+    blog.liked = true; // Update the liked property
+    await blog.save();
+
+    res.json({ message: 'Like count updated successfully' });
+  } catch (error) {
+    console.error('Failed to update like count:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
+
+
 module.exports = {
   createBlog,
   getBlogById,
@@ -66,4 +90,5 @@ module.exports = {
   deleteBlog,
   searchBlogs,
   getPaginatedBlogs,
+  updateLikeCount
 };

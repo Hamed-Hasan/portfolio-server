@@ -32,6 +32,6 @@ router.delete('/blog/:id', blogController.deleteBlog);
 
 router.get('/search', blogController.searchBlogs);
 router.get('/pagination', blogController.getPaginatedBlogs);
-
+router.post('/blogs/:id/like', blogController.updateLikeCount);
 
 module.exports = router;

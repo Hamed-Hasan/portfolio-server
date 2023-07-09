@@ -51,9 +51,6 @@ async function searchBlogs(searchQuery, page, limit) {
   }
 }
 
-
-
-
 async function getPaginatedBlogs(page, limit) {
   const blogs = await Blog.find({})
     .skip((page - 1) * limit)
